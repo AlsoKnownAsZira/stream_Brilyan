@@ -19,3 +19,10 @@ Pada langkah 10 akan dibuat function untuk menambahkan bilangan acak, menggunaka
 </p>
 
 ![Hasil Run Soal 6](soal6.gif)
+### Soal 7
+<p>Langkah 13 akan menambahkan metode addError untuk menghandle error<br>
+Langkah 14 akan update initstate yang menambahkan apa yang akan dilakukan saat error terjadi<br>
+Langkah 15 akan mengubah fungsi addRandomNumber dengan menambahkan .adderror() untuk memunculkan error
+</p>
+
+![hasil run soal 7](soal7.gif)
