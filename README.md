@@ -8,3 +8,7 @@
 ### Soal 4
 
 ![Hasil Run Soal 4](soal4.gif)
+
+### Soal 5
+</p>Listen adalah metode untuk mendengarkan stream dan menerima data saat tersedia, Listen tidak memerlukan async<p>
+<p>await for digunakan dalam fungsi async untuk menunggu dan iterasi nilai yang dihasilkan stream, await for perlu async</p>

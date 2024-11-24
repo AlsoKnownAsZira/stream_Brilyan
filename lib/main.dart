@@ -39,11 +39,11 @@ class _StreamHomePageState extends State<StreamHomePage> {
     changeColor();
   }
   void changeColor()async{
-    await for (var eventColor in colorstream.getColors()) {
+   colorstream.getColors().listen((eventColor) {
       setState(() {
         bgColor = eventColor;
       });
-    }
+    });
   }
   @override
   Widget build(BuildContext context) {
