@@ -26,3 +26,16 @@ Langkah 15 akan mengubah fungsi addRandomNumber dengan menambahkan .adderror() u
 </p>
 
 ![hasil run soal 7](soal7.gif)
+
+### Soal 8
+<p>StreamTransformer disini digunakan untuk mengubah data yang mengalir melalui stream sebelum data diterima listener. disini StreamTransformer<int,int> untuk memodifikasi nnilai integer yang mengalir melalui stream numberStreamController <br>
+handleData dipanggil saat ada data baru yang mengalir di stream, disini nilai value dikalikan 10 sebelum diteruskan ke sink.
+<br> handleError berfungsi saat terjadi error nilai -1 baru diteruskan ke sink sebagai penanda error <br> handleDone dipanggil ketika stream selesai, disini sink akan ditutup. <br> Stream dari numberStreamController diubah menggunakan transformer.
+Data yang dihasilkan oleh stream yang telah diubah kemudian didengarkan menggunakan listen.
+Setiap kali ada data baru (event), nilai lastNumber diperbarui dengan nilai yang telah dimodifikasi (dikalikan dengan 10).
+Jika terjadi kesalahan, nilai lastNumber diperbarui dengan -1.
+</p>
+
+![Hasil run soal 8](soal8.gif)
+
+### Soal 9

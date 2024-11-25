@@ -32,18 +32,29 @@ class StreamHomePage extends StatefulWidget {
 }
 
 class _StreamHomePageState extends State<StreamHomePage> {
+  late StreamTransformer transformer;
   int lastNumber = 0;
   late NumberStream numberStream;
   late StreamController numberStreamController;
   Color bgColor = Colors.blueGrey;
   late Colorstream colorstream;
-  @override
-  void initState() {
-    super.initState();
+ @override
+void initState() {
+  super.initState();
+  transformer = StreamTransformer<int, int>.fromHandlers(
+    handleData: (value, sink) {
+      sink.add(value * 10);
+    },
+    handleError: (error, trace, sink) {
+      sink.add(-1);
+    },
+    handleDone: (sink) => sink.close(),
+  );
+
   numberStream = NumberStream();
   numberStreamController = numberStream.controller;
-  Stream stream = numberStreamController.stream;
-  stream.listen((event) {
+  Stream stream = numberStreamController.stream.transform(transformer);
+  stream.transform(transformer).listen((event) {
     setState(() {
       lastNumber = event;
     });
@@ -53,18 +64,21 @@ class _StreamHomePageState extends State<StreamHomePage> {
     });
   });
   super.initState();
-  }
+}
+
   @override
   void dispose() {
     numberStreamController.close();
     super.dispose();
   }
-void addRandomNumber() {
-  Random random = Random();
-  int myNum = random.nextInt(10);
-  numberStream.addNumberToSink(myNum);
-  // numberStream.addError();
-}
+
+  void addRandomNumber() {
+    Random random = Random();
+    int myNum = random.nextInt(10);
+    numberStream.addNumberToSink(myNum);
+    // numberStream.addError();
+  }
+
   void changeColor() async {
     colorstream.getColors().listen((eventColor) {
       setState(() {
@@ -76,23 +90,22 @@ void addRandomNumber() {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Stream - Brilyan'),
-      ),
-      body:SizedBox(
-        width: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(lastNumber.toString()),
-            ElevatedButton(
-              onPressed: addRandomNumber,
-              child: const Text('Add Random Number'),
-            ),
-          ],
+        appBar: AppBar(
+          title: const Text('Stream - Brilyan'),
         ),
-      )
-    );
+        body: SizedBox(
+          width: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(lastNumber.toString()),
+              ElevatedButton(
+                onPressed: addRandomNumber,
+                child: const Text('Add Random Number'),
+              ),
+            ],
+          ),
+        ));
   }
 }
