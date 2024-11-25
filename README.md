@@ -42,3 +42,12 @@ Jika terjadi kesalahan, nilai lastNumber diperbarui dengan -1.
 <p>Langkah 2 akan menambahkan subscription yang menangani perubahan pada event seperti praktikum sebelum <br>Langkah 6 menambahkan subscription.cancel pada metode dispose() untuk menghentikan subscription saat tidak digunakan.<br>Pada langkah 8 ada modifikasi function addRandomNumber agar ada pengkondisian saat stream sedang dibuka atau tidak</p>
 
 ![Hasil run soal 9](soal9.gif)
+
+### Soal 10
+Error tersebut bisa terjadi karena kita mencoba listen ke sebuah single-subscription stream lebih dari satu kali
+
+### Soal 11
+<p>Hal ini terjadi karena kita memiliki dua listener yang mendengarkan stream yang sama, sehingga saat ada data baru kedua listener dipabggul dan ditambahkan nilai dua kali ke variabel values</p>
+
+![Hasil run soal 11](soal10-11.gif)
+
