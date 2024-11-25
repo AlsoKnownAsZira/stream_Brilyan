@@ -39,3 +39,6 @@ Jika terjadi kesalahan, nilai lastNumber diperbarui dengan -1.
 ![Hasil run soal 8](soal8.gif)
 
 ### Soal 9
+<p>Langkah 2 akan menambahkan subscription yang menangani perubahan pada event seperti praktikum sebelum <br>Langkah 6 menambahkan subscription.cancel pada metode dispose() untuk menghentikan subscription saat tidak digunakan.<br>Pada langkah 8 ada modifikasi function addRandomNumber agar ada pengkondisian saat stream sedang dibuka atau tidak</p>
+
+![Hasil run soal 9](soal9.gif)
